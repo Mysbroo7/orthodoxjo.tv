@@ -1,8 +1,7 @@
 {
-  "appId": "com.orthodox.app",
+  "appId": "com.orthodoxjo.webview",
   "appName": "Orthodox TV",
   "webDir": "www",
-  "bundledWebRuntime": false,
   "server": {
     "url": "https://orthodoxjo.tv/",
     "allowNavigation": ["orthodoxjo.tv"]
