@@ -1,0 +1,28 @@
+workflows:
+  ios-workflow:
+    name: iOS Build
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - apple_credentials # سنضبط هذا الاسم لاحقاً في الموقع
+      node: latest
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Capacitor Sync
+        script: |
+          npx cap sync ios
+      - name: Build iOS
+        script: |
+          # هذا الأمر يقوم ببناء نسخة الـ Release
+          xcode-project build-ipa --workspace ios/App/App.xcworkspace --scheme App
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com # ikhalifa685@gmail.com
